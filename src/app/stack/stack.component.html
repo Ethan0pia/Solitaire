@@ -1,0 +1,16 @@
+<span *ngIf="game.tableaus[num].length===0; else display">
+  <img src="../../assets/Cards/emptySlot.png" width=100px height=150px (click)="game.moveKing(num)">
+</span>
+
+<ng-template #display>
+    <table *ngFor="let card of game.tableaus[num]">
+      <td>
+          <span *ngIf="card.faceDown; else faceup">
+            <img src="../../assets/Cards/backOfCard.png" width=100px height=150px>
+          </span>
+          <ng-template #faceup>
+            <img src={{card.getSource()}} (click)="clickCard(card.value , card.suit, num)" width=100px height=150px>
+          </ng-template>
+      </td>
+    </table>
+  </ng-template>

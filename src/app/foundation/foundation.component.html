@@ -1,0 +1,9 @@
+
+<th *ngFor="let index of foundationIndex" (click) ="game.clickFoundation()">
+    <span *ngIf="index > game.foundations.length-1; else display">
+        <img src="../../assets/Cards/emptySlot.png" width=100px height=150px class="foundation">
+    </span>
+    <ng-template #display>
+            <img src={{game.foundations[index].imgSrc}} width=100px height=150px class="foundation">
+    </ng-template>
+</th>

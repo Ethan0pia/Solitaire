@@ -1,0 +1,6 @@
+<span *ngIf="game.wastePile.length===0; else display">
+    <img src="../../assets/Cards/emptySlot.png" width=100px height=150px>
+</span>
+<ng-template #display>
+    <img src={{game.wastePile[game.wastePile.length-1].imgSrc}} width=100px height=150px (click)="game.clickDiscard()">
+</ng-template>

@@ -1,0 +1,23 @@
+<button (click)="game.newGame();">New Game</button><span>Selected Card: {{game.currentCard}}</span>
+<span *ngIf="game.won(); else play">
+  <app-victory></app-victory>
+</span>
+<ng-template #play>
+  <table>
+    <th>
+        <span *ngIf="game.deck.getDeck().length===0; else display">
+            <img src="../../assets/Cards/emptySlot.png" width=100px height=150px (click)="game.restack()">
+        </span>
+        <ng-template #display>
+            <img src="../../assets/Cards/backOfCard.png" width=100px height=150px (click)="game.drawCard()">
+        </ng-template>
+    <th>
+      <app-discard [game]=game></app-discard>
+    <th width=100px height=150px></th>
+    <app-foundation [game]=game></app-foundation>
+  </table>
+  <table class="tableau">
+    <th *ngFor="let num of tableauLoops;">
+      <app-stack [num]=num [game]=game></app-stack>
+  </table>
+</ng-template>
